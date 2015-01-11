@@ -8,55 +8,49 @@
   <script src="./main.js"></script>
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script src="./game.js"></script>
-  <script>
-  var upPressed = 0;
-  var downPressed = 0;
-  var leftPressed = 0;
-  var rightPressed = 0;
-
-  function gameLoop()
-{
-
-  console.log('ran')
-              setTimeout("gameLoop()",15);
-            }
-
-            function keyDown(e)
-          {
-            var code = e.keyCode ? e.keyCode : e.which;
-            if (code == 38)
-              map2.setCenter(new google.maps.LatLng(map2.center.lat() + 0.000005, map2.center.lng()))
-            if (code == 40)
-              map2.setCenter(new google.maps.LatLng(map2.center.lat() - 0.00001, map2.center.lng()))
-            if (code == 37)
-              map2.setCenter(new google.maps.LatLng(map2.center.lat(), map2.center.lng() - 0.00001))
-            if (code == 39)
-              var c = document.createElement("canvas");
-              c.width = this.width;
-              c.height = this.height;
-              var ctx = c.getContext("2d");
-              ctx.rotate(90);
-              var imgData = ctx.createImageData(this.width, this.height);
-              ctx.putImageData(imgData);
-              return new Image(imgData);
-              map2.setCenter(new google.maps.LatLng(map2.center.lat(), map2.center.lng() + 0.00001))
-            }
-
-            function keyUp(e)
-            {
-              var code = e.keyCode ? e.keyCode : e.which;
-              if (code == 38)
-              upPressed = 0;
-              if (code == 40)
-              downPressed = 0;
-              if (code == 37)
-              leftPressed = 0;
-              if (code == 39)
-              rightPressed = 0;
-            }
-
-            map1.center = map2.center
-  </script>
+  <!-- // <script> -->
+  <!-- // var upPressed = 0;
+  // var downPressed = 0;
+  // var leftPressed = 0;
+  // var rightPressed = 0;
+  // var xA = 0;
+  // var yA = 0
+  // var d° = 0
+  //
+  // function gameLoop() {
+  //   console.log('ran')
+  //   setTimeout("gameLoop()",10);
+  //   map2.setCenter(new google.maps.LatLng(map2.center.lat() + xA, map2.center.lng() + yA))
+  //   map1.setCenter(map2.center)
+  //
+  //
+  // }
+  //
+  // function keyDown(e) {
+  //   d° = Math.atan2(xA, yA)/(Math.PI/180)
+  //   var code = e.keyCode ? e.keyCode : e.which;
+  //   if (code == 38)
+  //     xA += 0.0000002
+  //   if (code == 40)
+  //     xA -= 0.000001
+  //   if (code == 37)
+  //     yA -= 0.00000005
+  //   if (code == 39)
+  //     yA += 0.00000005
+  //   }
+  //
+  // function keyUp(e) {
+  //   var code = e.keyCode ? e.keyCode : e.which;
+  //   if (code == 38)
+  //   upPressed = 0;
+  //   if (code == 40)
+  //   downPressed = 0;
+  //   if (code == 37)
+  //   leftPressed = 0;
+  //   if (code == 39)
+  //   rightPressed = 0;
+  // } -->
+  <!-- //// </script> -->
 </head>
 
 <body onload="gameLoop()" onkeydown="keyDown(event)" onkeyup="keyUp(event)">
