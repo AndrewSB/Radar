@@ -32,6 +32,7 @@
   -webkit-zoom: 2;
   -moz-transform:  scale(2,2);
   -moz-transform-origin: left center;
+  border: 5px solid #8bc34a;
 }
 
 a[href^="http://maps.google.com/maps"]{display:none !important}
