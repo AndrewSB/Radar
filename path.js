@@ -1,17 +1,13 @@
 function getDirections(origin, destination) {
-
-  var theUrl = 'http://maps.googleapis.com/maps/api/directions/json?origin=' + origin[0] + ',' + origin[1] +'&destination=' + destination[0] + ',' + destination[1] + ''
-
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.onreadystatechange = function() {
-    if(xmlHttp.readyState===4) {
-
-      console.log(xmlHttp.responseText);
-    }
-  }
-  xmlHttp.open( "GET", theUrl, true);
-  xmlHttp.send( null );
-
+  var directionsService = new google.maps.DirectionsService();
+  var request = {
+    origin: origin[0]+","+origin[1],
+    destination:destination[0]+","+destination[1],
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(result, status) {
+    result
+  });
 }
 
 function parseDirections(json) {
