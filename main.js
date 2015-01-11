@@ -37,10 +37,10 @@ function move(lat, lon) {
   map2.setCenter(new google.maps.LatLng(lat, lon))
 }
 
-function addMarker(lat, lon) {
+function addMarker(lat, lon, m) {
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(lat, lon),
-    map: map1,
+    map: m,
     icon: "./car.png"
   });
 }
