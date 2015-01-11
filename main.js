@@ -100,7 +100,7 @@ function addMarker(lat, lon, map) {
   });  
 }
 function randomCloseLatLng(lat, lng) {
-  var dem = .009;
+  var dem = .0095;
   var randomLat = chance.latitude({min:lat-dem, max: lat + dem});
   var randomLng = chance.longitude({min:lng-dem, max: lng+ dem});
   console.log(randomLat)
@@ -155,8 +155,8 @@ google.maps.event.addDomListener(window, "load", function() {
     addRandomMarkers('person');
 
   };
-  for (var i = 0; i < 100; i++) {
-    addRandomMarkers('car');
+  for (var i = 0; i < 200; i++) {
+    addRandomMarkers('gcar');
 
   };
 });
