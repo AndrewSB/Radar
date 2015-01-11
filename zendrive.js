@@ -1,7 +1,5 @@
 window.oload = setInterval(function(){
-    console.log("runin")
     var rand = Math.floor((Math.random()-.5)*20)/10
-    console.log(rand)
     if (rand < 0) {
       document.getElementById("zendrive").style.color = "#ff492b"
     } else {
