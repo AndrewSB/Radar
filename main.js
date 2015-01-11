@@ -1,44 +1,39 @@
 var position = [37.688613, -122.468703];
-var map1 = "";
-var map2 = "";
+var map1;
+var map2;
 
-function loadBgMap() {
+
+function initialize() {
   var latLng = new google.maps.LatLng(position[0], position[1]);
+  var mapOptions1 = {
+    zoom: 21, // initialize zoom level - the max value is 21
+    streetViewControl: false, // hide the yellow Street View pegman
+    scaleControl: false, // allow users to zoom the Google Map
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: latLng
+  };
 
-  var mapOptions = {
-    zoom: 16, // initialize zoom level - the max value is 21
+  var mapOptions2 = {
+    zoom: 17, // initialize zoom level - the max value is 21
     streetViewControl: false, // hide the yellow Street View pegman
     scaleControl: true, // allow users to zoom the Google Map
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: latLng
   };
 
-  var map1 = new google.maps.Map(document.getElementById('bg-map'), mapOptions);
-  return map1;
+  map1 = new google.maps.Map(document.getElementById('fg-map'), mapOptions1);
+  map2 = new google.maps.Map(document.getElementById('bg-map'), mapOptions2);
+
 }
 
-function loadFgMap() {
-    var latLng = new google.maps.LatLng(position[0], position[1]);
-
-    var mapOptions = {
-      zoom: 21, // initialize zoom level - the max value is 21
-      streetViewControl: false, // hide the yellow Street View pegman
-      scaleControl: false, // allow users to zoom the Google Map
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      center: latLng
-    };
-
-    map2 = new google.maps.Map(document.getElementById('fg-map'), mapOptions);
-    return map2;
+function move(lat, lon) {
+  map1.setCenter(new google.maps.LatLng(lat, lon))
+  map2.setCenter(new google.maps.LatLng(lat, lon))
 }
 
-document.onload = function() {
-  map1 = loadBgMap();
-  map2 = loadFgMap();
-}
-
-google.maps.event.addDomListener(window, 'load', loadBgMap);
-google.maps.event.addDomListener(window, 'load', loadFgMap);
+//google.maps.event.addDomListener(window, 'load', loadBgMap);
+//google.maps.event.addDomListener(window, 'load', loadFgMap);
 //
 // console.log(map1);
 // console.log(map2);
+google.maps.event.addDomListener(window, "load", initialize);
