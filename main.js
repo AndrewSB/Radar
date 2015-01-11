@@ -27,9 +27,10 @@ function initialize() {
     center: latLng
   };
 
-  map1 = new google.maps.Map(document.getElementById('fg-map'), mapOptions2);
-  map2 = new google.maps.Map(document.getElementById('bg-map'), mapOptions1);
-  map1.setOptions({styles: styleArray});
+  
+  map1 = new google.maps.Map(document.getElementById('bg-map'), mapOptions1);
+  map2 = new google.maps.Map(document.getElementById('fg-map'), mapOptions2);
+  map2.setOptions({styles: styleArray});
 }
 
 function move(lat, lon) {
@@ -38,11 +39,35 @@ function move(lat, lon) {
 }
 
 function addMarker(lat, lon, map) {
+  var image = {
+    url: './icons/caroutline_thumb.png',
+    // This marker is 20 pixels wide by 32 pixels tall.
+    // The origin for this image is 0,0.
+    //size: new google.maps.Size(20, 32),
+
+    origin: new google.maps.Point(0,0),
+    // The anchor for this image is the base of the flagpole at 0,32.
+    anchor: new google.maps.Point(0, 0)
+  };
+
+
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(lat, lon),
     map: map,
-    icon: "./icons/car.png"
+    icon: image
   });
+}
+
+function addPolyline(coordinates, map) {
+  var flightPath = new google.maps.Polyline({
+    path: coordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+  flightPath.setMap(map);
 }
 
 google.maps.event.addDomListener(window, "load", initialize);

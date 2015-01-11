@@ -6,14 +6,15 @@ function getDirections(origin, destination) {
     travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(result, status) {
-    result
+    addPolyline(result['overview_polyline'], map1);
+    addPolyline(result['overview_polyline'], map2);
   });
 }
 
 function parseDirections(json) {
   var arr = []
-  for (var i = 0; i < d["routes"][0]["legs"][0]["steps"].length; i++) {
-    arr.push(d["routes"][0]["legs"][0]["steps"][i]["polyline"]["points"])
+  for (var i = 0; i < json["routes"][0]["legs"][0]["steps"].length; i++) {
+    arr.push(json["routes"][0]["legs"][0]["steps"][i]["polyline"]["points"])
   }
   var str = ''
   for (var i = 0; i < arr.length; i++) {
@@ -22,7 +23,7 @@ function parseDirections(json) {
   console.log(str)
 }
 
-var o = [37.77223,-122.413521]
-var d = [37.769919,-122.415463]
+var o = [37.68883102943947,-122.4683784527092]
+var d = [37.769919,-121.415483]
 
 getDirections(o,d)
