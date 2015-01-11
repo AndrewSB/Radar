@@ -19,6 +19,7 @@
   /*opacity: .45; /* Set the opacity for a slightly transparent Google Form */*/
   color: white;
   width: 70%;
+  max-width: 200px;
   height: 40%;
   position: absolute;
   top:0;
