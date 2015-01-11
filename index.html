@@ -17,7 +17,7 @@
   <div id="bg-map"></div>
   <div id="fg-map"></div>
   <img id="carImg" src="./icons/car.png"></img>
-  <!-- <div class="dot"></div> -->
+  <div id="zendrive">84.7%</div>
 
 </body>
 	<script>
@@ -51,12 +51,12 @@
 	     if (code == 38) {
 	     	xA += 0.0000002
 	     }
-	       
+
 	    // down
 	     if (code == 40) {
 	     	xA -= 0.000001
 	     }
-	       
+
 	   	// left
 	     if (code == 37) {
 	     	if(carAngle < - 359) {
@@ -78,7 +78,7 @@
 	     	//var degrees = (((Math.atan(xA * 10000, yA * 10000) % 2*Math.PI) / 2*Math.PI) * 360);
 	    	carImg.style.transform = "rotate(" + carAngle + "deg)";
 	     }
-	       
+
 	   });
 	   /*
 	   document.addEventListener("keyUp", function(e) {
@@ -94,7 +94,7 @@
 	   });
 */
 	   	setInterval(function() {gameLoop()},15);
-   
+
   </script>
 
 </html>
