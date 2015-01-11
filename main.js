@@ -1,4 +1,4 @@
-var position = [37.68864, -122.468703];
+var position = [37.68255383131444, -122.4607984408006];
 var map1;
 var map2;
 
@@ -156,7 +156,7 @@ google.maps.event.addDomListener(window, "load", function() {
 
   };
   for (var i = 0; i < 100; i++) {
-    addRandomMarkers('gcar');
+    addRandomMarkers('car');
 
   };
 });
