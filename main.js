@@ -8,18 +8,18 @@ function initialize() {
   var mapOptions2 = {
     zoom: 21, // initialize zoom level - the max value is 21
     streetViewControl: false, // hide the yellow Street View pegman
-    //scaleControl: false, // allow users to zoom the Google Map
+    scaleControl: false, // allow users to zoom the Google Map
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI:true,
     center: latLng,
-    //draggable: false,
+    draggable: false,
     zoomControl: false
   };
 
   var styleArray = [{"elementType": "labels.text","stylers": [{ "visibility": "off" }]},{"elementType": "labels.icon","stylers": [{ "visibility": "off" }]},{}]
 
   var mapOptions1 = {
-    zoom: 18, // initialize zoom level - the max value is 21
+    zoom: 19, // initialize zoom level - the max value is 21
     streetViewControl: false, // hide the yellow Street View pegman
     scaleControl: true, // allow users to zoom the Google Map
     mapTypeId: google.maps.MapTypeId.ROADMAP,

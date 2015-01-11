@@ -18,9 +18,8 @@
   /*height: auto;*/
   /*opacity: .45; /* Set the opacity for a slightly transparent Google Form */*/
   color: white;
-  width: 70%;
-  max-width: 200px;
-  height: 40%;
+  max-width: 100px;
+  max-height: 100px;
   position: absolute;
   top:0;
   bottom: 0;
@@ -50,7 +49,7 @@ a[title="Report problems with Street View imagery to Google"]{display:none !impo
 
 #carImg {
   z-index: 1;
-  width: 16%;
+  width: 40px;
   height: auto;
   position: absolute;
   top:0;
