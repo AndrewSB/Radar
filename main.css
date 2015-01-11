@@ -59,3 +59,13 @@ a[title="Report problems with Street View imagery to Google"]{display:none !impo
   margin: auto;
   border: none;
 }
+
+
+#zendrive {
+  family-name: helvetica;
+  font-size: 250%;
+  color: green;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
