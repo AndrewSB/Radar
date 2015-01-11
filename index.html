@@ -15,14 +15,7 @@
   var leftPressed = 0;
   var rightPressed = 0;
 
-  function gameLoop()
-{
-
-  console.log('ran')
-              setTimeout("gameLoop()",15);
-            }
-
-            function keyDown(e)
+   function keyDown(e)
           {
             var code = e.keyCode ? e.keyCode : e.which;
             if (code == 38)
@@ -57,6 +50,7 @@
             }
 
             map1.center = map2.center
+            setTimeout(gameLoop,15);
   </script>
 </head>
 
