@@ -3,9 +3,9 @@ var map1;
 var map2;
 
 var hardcodedMarkers = [
-  {'lat' : 37.68907099999915,
-   'lng' : -122.46868930000471, 
-   't' : 'gcar'},
+  {'lat' : 37.68325983131488,
+   'lng' : -122.460788740802, 
+   't' : 'gc ;;¬…¬'},
   {'lat' : 37.68950519999958, 
    'lng' :-122.46871624999545,
    't' : 'person'}
@@ -160,5 +160,9 @@ google.maps.event.addDomListener(window, "load", function() {
 
   };
 });
+
+function center(type) {
+  return {'lat' : map2.getCenter()['k'], 'lng' : map2.getCenter()['D'], 't' : type };
+}
 
 
