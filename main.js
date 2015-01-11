@@ -25,6 +25,10 @@ var hardcodedMarkers = [
 
 ];
 
+function createShadow() {
+  
+}
+
 function initialize() {
   var latLng = new google.maps.LatLng(position[0], position[1]);
   var mapOptions2 = {
@@ -49,7 +53,7 @@ function initialize() {
     center: latLng
   };
 
-  
+
   map1 = new google.maps.Map(document.getElementById('bg-map'), mapOptions1);
   map2 = new google.maps.Map(document.getElementById('fg-map'), mapOptions2);
   map2.setOptions({styles: styleArray});
@@ -79,19 +83,19 @@ function showHardcodedMarkers() {
         icon: image
       });
     }
-    else {    
+    else {
       var marker1 = new google.maps.Marker({
         position: thisLatLng,
         map: map1,
         icon: image
-      }); 
+      });
       var marker2 = new google.maps.Marker({
         position: thisLatLng,
         map: map2,
         icon: image
       });
     }
-     
+
   }
 }
 
@@ -110,7 +114,7 @@ function addMarker(lat, lon, map) {
     position: new google.maps.LatLng(lat, lon),
     map: map,
     icon: image
-  });  
+  });
 }
 function randomCloseLatLng(lat, lng) {
   var dem = .0095;
@@ -140,7 +144,7 @@ function addRandomMarkers(type) {
     position: thisLatLng,
     map: map1,
     icon: image
-  }); 
+  });
    var marker2 = new google.maps.Marker({
     position: thisLatLng,
     map: map2,
@@ -177,5 +181,3 @@ google.maps.event.addDomListener(window, "load", function() {
 function center(type) {
   return {'lat' : map2.getCenter()['k'], 'lng' : map2.getCenter()['D'], 't' : type };
 }
-
-
