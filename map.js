@@ -3,7 +3,6 @@ var map1;
 var map2;
 
 function initialize() {
-  console.log("initialized")
   var latLng = new google.maps.LatLng(position[0], position[1]);
   var mapOptions2 = {
     zoom: 21, // initialize zoom level - the max value is 21
