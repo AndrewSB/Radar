@@ -2,8 +2,8 @@ var position = [37.68864, -122.468703];
 var map1;
 var map2;
 
-
 function initialize() {
+  console.log("initialized")
   var latLng = new google.maps.LatLng(position[0], position[1]);
   var mapOptions2 = {
     zoom: 21, // initialize zoom level - the max value is 21
@@ -47,6 +47,3 @@ function addMarker(lat, lon, map) {
 
 
 google.maps.event.addDomListener(window, "load", initialize);
-
-
-
