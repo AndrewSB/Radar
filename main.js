@@ -4,9 +4,11 @@ var map2;
 
 var hardcodedMarkers = [
   {'lat' : 37.68907099999915,
-   'lng' : -122.46868930000471},
+   'lng' : -122.46868930000471, 
+   't' : 'gcar'},
   {'lat' : 37.68950519999958, 
-   'lng' :-122.46871624999545}
+   'lng' :-122.46871624999545,
+   't' : 'person'}
 
 ];
 
@@ -48,7 +50,7 @@ function showHardcodedMarkers() {
   for(var i = 0; i < hardcodedMarkers.length; i++) {
     var thisLatLng = new google.maps.LatLng(hardcodedMarkers[i]['lat'], hardcodedMarkers[i]['lng']);
     var image = {
-      url: './icons/caroutline_thumb.png',
+      url: './icons/' + hardcodedMarkers[i]['t'] + '.png',
       // This marker is 20 pixels wide by 32 pixels tall.
       // The origin for this image is 0,0.
       //size: new google.maps.Size(20, 32),
@@ -57,16 +59,26 @@ function showHardcodedMarkers() {
       // The anchor for this image is the base of the flagpole at 0,32.
       //]anchor: new google.maps.Point(0, 0)
     };
-    var marker1 = new google.maps.Marker({
-      position: thisLatLng,
-      map: map1,
-      icon: image
-    }); 
-     var marker2 = new google.maps.Marker({
-      position: thisLatLng,
-      map: map2,
-      icon: image
-    });
+    if(hardcodedMarkers[i]['t'] === 'person') {
+      var marker2 = new google.maps.Marker({
+        position: thisLatLng,
+        map: map2,
+        icon: image
+      });
+    }
+    else {    
+      var marker1 = new google.maps.Marker({
+        position: thisLatLng,
+        map: map1,
+        icon: image
+      }); 
+      var marker2 = new google.maps.Marker({
+        position: thisLatLng,
+        map: map2,
+        icon: image
+      });
+    }
+     
   }
 }
 
@@ -88,7 +100,7 @@ function addMarker(lat, lon, map) {
   });  
 }
 function randomCloseLatLng(lat, lng) {
-  var dem = .0009;
+  var dem = .009;
   var randomLat = chance.latitude({min:lat-dem, max: lat + dem});
   var randomLng = chance.longitude({min:lng-dem, max: lng+ dem});
   console.log(randomLat)
@@ -96,13 +108,13 @@ function randomCloseLatLng(lat, lng) {
   return new google.maps.LatLng(randomLat, randomLng);
 }
 
-function addRandomMarkers() {
+function addRandomMarkers(type) {
 
   var mapLat = map1.getCenter().k;
   var mapLng = map1.getCenter().D;
   var thisLatLng = randomCloseLatLng(mapLat, mapLng);
   var image = {
-    url: './icons/caroutline_thumb.png',
+    url: './icons/' + type + '.png',
     // This marker is 20 pixels wide by 32 pixels tall.
     // The origin for this image is 0,0.
     //size: new google.maps.Size(20, 32),
@@ -137,6 +149,16 @@ function addPolyline(coordinates, map) {
 }
 
 google.maps.event.addDomListener(window, "load", initialize);
-showHardcodedMarkers()
+google.maps.event.addDomListener(window, "load", function() {
+  showHardcodedMarkers();
+  for (var i = 0; i < 1000; i++) {
+    addRandomMarkers('person');
+
+  };
+  for (var i = 0; i < 100; i++) {
+    addRandomMarkers('gcar');
+
+  };
+});
 
 

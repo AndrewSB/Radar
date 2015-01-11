@@ -49,34 +49,34 @@
 	     var code = e.keyCode ? e.keyCode : e.which;
 	     // up
 	     if (code == 38) {
-	     	xA += 0.0000002
+	     	xA += 0.0000005
 	     }
 	       
 	    // down
 	     if (code == 40) {
-	     	xA -= 0.000001
+	     	xA -= 0.0000005
 	     }
 	       
 	   	// left
 	     if (code == 37) {
 	     	if(carAngle < - 359) {
-	     		carAngle = 0;
+	     		//carAngle = 0;
 	     	}
-	     	carAngle -=10;
+	     	//carAngle -=10;
 	     	yA -= 0.00000005
 	     	//var degrees = (((Math.atan(xA * 10000, yA * 10000) % 2*Math.PI) / 2*Math.PI) * 360);
-	     	carImg.style.transform = "rotate(" + carAngle + "deg)";
+	     	//carImg.style.transform = "rotate(" + carAngle + "deg)";
 	     }
 
 	    // right
 	     if (code == 39) {
 	     	if(carAngle > 359) {
-	     		carAngle = 0;
+	     	//	carAngle = 0;
 	     	}
-	     	carAngle += 10;
+	     	//carAngle += 10;
 	     	yA += 0.00000005;
 	     	//var degrees = (((Math.atan(xA * 10000, yA * 10000) % 2*Math.PI) / 2*Math.PI) * 360);
-	    	carImg.style.transform = "rotate(" + carAngle + "deg)";
+	    	//carImg.style.transform = "rotate(" + carAngle + "deg)";
 	     }
 	       
 	   });
