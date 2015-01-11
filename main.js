@@ -45,10 +45,6 @@ function addMarker(lat, lon, map) {
   });
 }
 
-function getDirections() {
-  
-}
-
 
 google.maps.event.addDomListener(window, "load", initialize);
 
