@@ -1,4 +1,4 @@
-var position = [37.688613, -122.468703];
+var position = [37.68864, -122.468703];
 var map1;
 var map2;
 
@@ -10,20 +10,26 @@ function initialize() {
     streetViewControl: false, // hide the yellow Street View pegman
     scaleControl: false, // allow users to zoom the Google Map
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center: latLng
+    disableDefaultUI:true,
+    center: latLng,
+    draggable: false,
+    zoomControl: false
   };
 
+  var styleArray = [{"elementType": "labels.text","stylers": [{ "visibility": "off" }]},{"elementType": "labels.icon","stylers": [{ "visibility": "off" }]},{}]
+
   var mapOptions2 = {
-    zoom: 17, // initialize zoom level - the max value is 21
+    zoom: 18, // initialize zoom level - the max value is 21
     streetViewControl: false, // hide the yellow Street View pegman
     scaleControl: true, // allow users to zoom the Google Map
     mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI:true,
     center: latLng
   };
 
   map1 = new google.maps.Map(document.getElementById('fg-map'), mapOptions1);
   map2 = new google.maps.Map(document.getElementById('bg-map'), mapOptions2);
-
+  map1.setOptions({styles: styleArray});
 }
 
 function move(lat, lon) {

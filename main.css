@@ -4,12 +4,12 @@
   position:absolute;
   top: 0;
   left: 0;
-  z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
+  z-index: -1; /* Set z-index to 0 as it will be on a layer below the contact form */
 }
 
 #fg-map {
   /*position: absolute;*/
-  z-index: 1; /* The z-index should be higher than Google Maps */
+  z-index: 0; /* The z-index should be higher than Google Maps */
   /*width: auto;*/
   /*margin: 60px auto 0;*/
   padding: 10px;
@@ -26,4 +26,35 @@
   left: 0;
   right: 0;
   margin: auto;
+  zoom: 2;
+  -ms-zoom: 2;
+  -webkit-zoom: 2;
+  -moz-transform:  scale(2,2);
+  -moz-transform-origin: left center;
+}
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[title="Report problems with Street View imagery to Google"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span {
+  display:none;
+}
+.gmnoprint div {
+  background:none !important;
+}
+
+#map-report a img { display:none; }
+
+
+#carImg {
+  z-index: 1;
+  width: 13%;
+  height: auto;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: none;
 }
