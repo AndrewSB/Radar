@@ -6,4 +6,4 @@ window.oload = setInterval(function(){
       document.getElementById("zendrive").style.color = "#5aaa25"
     }
     document.getElementById("zendrive").innerHTML =  (84.7+rand).toString().substring(0,4) + "%"
-  }, 4500);
+  }, 10000);
