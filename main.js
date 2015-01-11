@@ -31,9 +31,5 @@ function move(lat, lon) {
   map2.setCenter(new google.maps.LatLng(lat, lon))
 }
 
-//google.maps.event.addDomListener(window, 'load', loadBgMap);
-//google.maps.event.addDomListener(window, 'load', loadFgMap);
-//
-// console.log(map1);
-// console.log(map2);
+
 google.maps.event.addDomListener(window, "load", initialize);
