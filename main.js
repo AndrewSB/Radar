@@ -2,6 +2,13 @@ var position = [37.68864, -122.468703];
 var map1;
 var map2;
 
+var hardcodedMarkers = [
+  {'lat' : 37.68907099999915,
+   'lng' : -122.46868930000471},
+  {'lat' : 37.68950519999958, 
+   'lng' :-122.46871624999545}
+
+];
 
 function initialize() {
   var latLng = new google.maps.LatLng(position[0], position[1]);
@@ -37,8 +44,30 @@ function move(lat, lon) {
   map1.setCenter(new google.maps.LatLng(lat, lon))
   map2.setCenter(new google.maps.LatLng(lat, lon))
 }
-function hardcodedMarkers() {
-  
+function showHardcodedMarkers() {
+  for(var i = 0; i < hardcodedMarkers.length; i++) {
+    var thisLatLng = new google.maps.LatLng(hardcodedMarkers[i]['lat'], hardcodedMarkers[i]['lng']);
+    var image = {
+      url: './icons/caroutline_thumb.png',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      // The origin for this image is 0,0.
+      //size: new google.maps.Size(20, 32),
+
+      //origin: new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      //]anchor: new google.maps.Point(0, 0)
+    };
+    var marker1 = new google.maps.Marker({
+      position: thisLatLng,
+      map: map1,
+      icon: image
+    }); 
+     var marker2 = new google.maps.Marker({
+      position: thisLatLng,
+      map: map2,
+      icon: image
+    });
+  }
 }
 
 function addMarker(lat, lon, map) {
@@ -108,6 +137,6 @@ function addPolyline(coordinates, map) {
 }
 
 google.maps.event.addDomListener(window, "load", initialize);
-
+showHardcodedMarkers()
 
 
