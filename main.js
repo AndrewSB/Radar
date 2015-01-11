@@ -170,8 +170,10 @@ google.maps.event.addDomListener(window, "load", function() {
   };
   for (var i = 0; i < 200; i++) {
     addRandomMarkers('gcar');
+    addRandomMarkers('tree');
 
   };
+
 });
 
 function center(type) {
