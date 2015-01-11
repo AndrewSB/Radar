@@ -5,56 +5,15 @@
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./outline.css">
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>   <!-- required to have google maps load -->
+  <script src="./chance.js"></script>
   <script src="./main.js"></script>
   <script src="./path.js"></script>
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script src="./game.js"></script>
-  <script>
-  var upPressed = 0;
-  var downPressed = 0;
-  var leftPressed = 0;
-  var rightPressed = 0;
 
-   function keyDown(e)
-          {
-            var code = e.keyCode ? e.keyCode : e.which;
-            if (code == 38)
-              map2.setCenter(new google.maps.LatLng(map2.center.lat() + 0.000005, map2.center.lng()))
-            if (code == 40)
-              map2.setCenter(new google.maps.LatLng(map2.center.lat() - 0.00001, map2.center.lng()))
-            if (code == 37)
-              map2.setCenter(new google.maps.LatLng(map2.center.lat(), map2.center.lng() - 0.00001))
-            if (code == 39)
-              var c = document.createElement("canvas");
-              c.width = this.width;
-              c.height = this.height;
-              var ctx = c.getContext("2d");
-              ctx.rotate(90);
-              var imgData = ctx.createImageData(this.width, this.height);
-              ctx.putImageData(imgData);
-              return new Image(imgData);
-              map2.setCenter(new google.maps.LatLng(map2.center.lat(), map2.center.lng() + 0.00001))
-            }
-
-            function keyUp(e)
-            {
-              var code = e.keyCode ? e.keyCode : e.which;
-              if (code == 38)
-              upPressed = 0;
-              if (code == 40)
-              downPressed = 0;
-              if (code == 37)
-              leftPressed = 0;
-              if (code == 39)
-              rightPressed = 0;
-            }
-
-            map1.center = map2.center
-            setTimeout(gameLoop,15);
-  </script>
 </head>
 
-<body onload="gameLoop()" onkeydown="keyDown(event)" onkeyup="keyUp(event)">
+<body onload="gameLoop">
   <div id="bg-map"></div>
   <div id="fg-map"></div>
   <img id="carImg" src="./icons/car.png"></img>
@@ -69,6 +28,73 @@
 	  });
 	</script>
 
+	<script>
+	  var carImg = document.getElementById('carImg');
 
+	  var upPressed = 0;
+	  var downPressed = 0;
+	  var leftPressed = 0;
+	  var rightPressed = 0;
+	  var xA = 0;
+	  var yA = 0;
+	  var carAngle = 0;
+
+	  function gameLoop() {
+	     map2.setCenter(new google.maps.LatLng(map2.center.lat() + xA, map2.center.lng() + yA))
+
+
+	     map1.setCenter(map2.center);
+	   }
+	  document.addEventListener("keydown", function(e) {
+	     var code = e.keyCode ? e.keyCode : e.which;
+	     // up
+	     if (code == 38) {
+	     	xA += 0.0000002
+	     }
+	       
+	    // down
+	     if (code == 40) {
+	     	xA -= 0.000001
+	     }
+	       
+	   	// left
+	     if (code == 37) {
+	     	if(carAngle < - 359) {
+	     		carAngle = 0;
+	     	}
+	     	carAngle -=10;
+	     	yA -= 0.00000005
+	     	//var degrees = (((Math.atan(xA * 10000, yA * 10000) % 2*Math.PI) / 2*Math.PI) * 360);
+	     	carImg.style.transform = "rotate(" + carAngle + "deg)";
+	     }
+
+	    // right
+	     if (code == 39) {
+	     	if(carAngle > 359) {
+	     		carAngle = 0;
+	     	}
+	     	carAngle += 10;
+	     	yA += 0.00000005;
+	     	//var degrees = (((Math.atan(xA * 10000, yA * 10000) % 2*Math.PI) / 2*Math.PI) * 360);
+	    	carImg.style.transform = "rotate(" + carAngle + "deg)";
+	     }
+	       
+	   });
+	   /*
+	   document.addEventListener("keyUp", function(e) {
+	     var code = e.keyCode ? e.keyCode : e.which;
+	     if (code == 38)
+	     upPressed = 0;
+	     if (code == 40)
+	     downPressed = 0;
+	     if (code == 37)
+	     leftPressed = 0;
+	     if (code == 39)
+	     rightPressed = 0;
+	   });
+*/
+	   	setInterval(function() {gameLoop()},15);
+   
+  </script>
 
 </html>

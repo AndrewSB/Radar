@@ -19,7 +19,7 @@ function initialize() {
   var styleArray = [{"elementType": "labels.text","stylers": [{ "visibility": "off" }]},{"elementType": "labels.icon","stylers": [{ "visibility": "off" }]},{}]
 
   var mapOptions1 = {
-    zoom: 19, // initialize zoom level - the max value is 21
+    zoom: 18, // initialize zoom level - the max value is 21
     streetViewControl: false, // hide the yellow Street View pegman
     scaleControl: true, // allow users to zoom the Google Map
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -37,6 +37,9 @@ function move(lat, lon) {
   map1.setCenter(new google.maps.LatLng(lat, lon))
   map2.setCenter(new google.maps.LatLng(lat, lon))
 }
+function hardcodedMarkers() {
+  
+}
 
 function addMarker(lat, lon, map) {
   var image = {
@@ -49,14 +52,48 @@ function addMarker(lat, lon, map) {
     // The anchor for this image is the base of the flagpole at 0,32.
     anchor: new google.maps.Point(0, 0)
   };
-
-
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(lat, lon),
     map: map,
     icon: image
+  });  
+}
+function randomCloseLatLng(lat, lng) {
+  var dem = .0009;
+  var randomLat = chance.latitude({min:lat-dem, max: lat + dem});
+  var randomLng = chance.longitude({min:lng-dem, max: lng+ dem});
+  console.log(randomLat)
+  console.log(randomLng)
+  return new google.maps.LatLng(randomLat, randomLng);
+}
+
+function addRandomMarkers() {
+
+  var mapLat = map1.getCenter().k;
+  var mapLng = map1.getCenter().D;
+  var thisLatLng = randomCloseLatLng(mapLat, mapLng);
+  var image = {
+    url: './icons/caroutline_thumb.png',
+    // This marker is 20 pixels wide by 32 pixels tall.
+    // The origin for this image is 0,0.
+    //size: new google.maps.Size(20, 32),
+
+    //origin: new google.maps.Point(0,0),
+    // The anchor for this image is the base of the flagpole at 0,32.
+    //]anchor: new google.maps.Point(0, 0)
+  };
+  var marker1 = new google.maps.Marker({
+    position: thisLatLng,
+    map: map1,
+    icon: image
+  }); 
+   var marker2 = new google.maps.Marker({
+    position: thisLatLng,
+    map: map2,
+    icon: image
   });
 }
+
 
 function addPolyline(coordinates, map) {
   var flightPath = new google.maps.Polyline({
