@@ -1,0 +1,26 @@
+{
+  "name": "Radar",
+  "version": "1.0.0",
+  "description": "Hack The Drive app",
+  "main": "app.js",
+  "dependencies": {
+    "fs": "^0.0.2",
+    "express": "^4.10.7",
+    "socket.io": "^1.2.1",
+    "http": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndrewSB/Radar.git"
+  },
+  "author": "a & a",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewSB/Radar/issues"
+  },
+  "homepage": "https://github.com/AndrewSB/Radar"
+}
