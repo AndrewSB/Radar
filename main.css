@@ -1,3 +1,17 @@
+#header {
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  color: #FDFDFD;
+  position: absolute;
+  top:0;
+  left: 0;
+  font-size: 24px;
+  letter-spacing: 3px;
+  line-height: 55px;
+  font-family: Helvetica;
+}
+
 #bg-map {
   height: 100%;
   width: 100%;
@@ -31,7 +45,7 @@
   -webkit-zoom: 2;
   -moz-transform:  scale(2,2);
   -moz-transform-origin: left center;
-  border: 5px solid #64B6E5;
+  border: 3px solid #64B6E5;
 }
 
 a[href^="http://maps.google.com/maps"]{display:none !important}
@@ -45,6 +59,36 @@ a[title="Report problems with Street View imagery to Google"]{display:none !impo
 }
 
 #map-report a img { display:none; }
+
+
+.gps_ring {
+    border: 1px solid #64B6E5;
+    -webkit-border-radius: 30px;
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top:48.5%;
+    margin: auto;
+    -webkit-animation: pulsate 2s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    opacity: 0.0;
+    z-index:10;
+
+}
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(1, 1); opacity: 0.05;}
+    /*
+    25% {-webkit-transform: scale(2, 2); opacity: 0.4;}
+    50% {opacity: .5;}
+    75% {-webkit-transform: scale(3.2, 3.2); opacity: .7;}
+    80% {-webkit-transform: scale(5.2, 5.2); opacity: .8;}
+    90% {-webkit-transform: scale(6.2, 6.2); opacity: .8;}*/
+    100% {-webkit-transform: scale(12.8, 12.8); opacity:.2;}
+}
 
 
 #carImg {
@@ -64,8 +108,9 @@ a[title="Report problems with Street View imagery to Google"]{display:none !impo
 #zendrive {
   family-name: helvetica;
   font-size: 250%;
-  color: green;
+  color: #6FC59E;
   position: fixed;
   bottom: 0;
   right: 0;
 }
+

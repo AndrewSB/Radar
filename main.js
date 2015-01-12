@@ -15,12 +15,12 @@ var hardcodedMarkers = [
   {lat: 37.68404033131427, lng: -122.46080999079845, t: "person"},
   {lat: 37.68410533131415, lng: -122.4607765407975, t: "blob1"},
   {lat: 37.684260331314185, lng: -122.4607872907967, t: "blob2"},
-  {lat: 37.68427483131438, lng: -122.46081049080345, t: "tree"},
   {lat: 37.683028831313244, lng: -122.46079164079867, t: "gcar"},
   {lat: 37.68316183131291, lng: -122.46079164079867, t: "gcar"},
   {lat: 37.683218331312766, lng: -122.46079164079867, t: "gcar"},
   {lat: 37.683286331312964, lng: -122.46077959080219, t: "person"},
-  {lat: 37.683306331313766, lng: -122.4608068407988, t: "tree"}
+  {lat: 37.68488033131354, lng: -122.46081439080069, t: "person"},
+  {lat: 37.68363733131454, lng: -122.4608293407963, t: "tree"}
 
 
 ];
@@ -66,37 +66,25 @@ function move(lat, lon) {
 function showHardcodedMarkers() {
   for(var i = 0; i < hardcodedMarkers.length; i++) {
     var thisLatLng = new google.maps.LatLng(hardcodedMarkers[i]['lat'], hardcodedMarkers[i]['lng']);
-    var image = {
-      url: './icons/' + hardcodedMarkers[i]['t'] + '.png',
-      // This marker is 20 pixels wide by 32 pixels tall.
-      // The origin for this image is 0,0.
-      //size: new google.maps.Size(20, 32),
-
-      //origin: new google.maps.Point(0,0),
-      // The anchor for this image is the base of the flagpole at 0,32.
-      //]anchor: new google.maps.Point(0, 0)
+    var image1 = {
+      url: './icons/' + hardcodedMarkers[i]['t'] + '.png'
     };
-    if(hardcodedMarkers[i]['t'] === 'person') {
-      var marker2 = new google.maps.Marker({
-        position: thisLatLng,
-        map: map2,
-        icon: image
-      });
-    }
-    else {
-      var marker1 = new google.maps.Marker({
-        position: thisLatLng,
-        map: map1,
-        icon: image
-      });
-      var marker2 = new google.maps.Marker({
-        position: thisLatLng,
-        map: map2,
-        icon: image
-      });
-    }
-
+    var image2 = {
+      url: './icons/' + hardcodedMarkers[i]['t'] + '_red.png'
+    };
+    var marker1 = new google.maps.Marker({
+      position: thisLatLng,
+      map: map1,
+      icon: image1
+    });
+    var marker2 = new google.maps.Marker({
+      position: thisLatLng,
+      map: map2,
+      icon: image2
+    });
   }
+
+  
 }
 
 function addMarker(lat, lon, map) {
@@ -130,25 +118,21 @@ function addRandomMarkers(type) {
   var mapLat = map1.getCenter().k;
   var mapLng = map1.getCenter().D;
   var thisLatLng = randomCloseLatLng(mapLat, mapLng);
-  var image = {
+  var image1 = {
     url: './icons/' + type + '.png',
-    // This marker is 20 pixels wide by 32 pixels tall.
-    // The origin for this image is 0,0.
-    //size: new google.maps.Size(20, 32),
-
-    //origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
-    //]anchor: new google.maps.Point(0, 0)
+  };
+  var image2 = {
+    url: './icons/' + type + '_red.png',
   };
   var marker1 = new google.maps.Marker({
     position: thisLatLng,
     map: map1,
-    icon: image
+    icon: image1
   });
    var marker2 = new google.maps.Marker({
     position: thisLatLng,
     map: map2,
-    icon: image
+    icon: image2
   });
 }
 
@@ -168,11 +152,11 @@ function addPolyline(coordinates, map) {
 google.maps.event.addDomListener(window, "load", initialize);
 google.maps.event.addDomListener(window, "load", function() {
   showHardcodedMarkers();
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 1010; i++) {
     addRandomMarkers('person');
 
   };
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 450; i++) {
     addRandomMarkers('gcar');
     addRandomMarkers('tree');
 

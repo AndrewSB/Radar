@@ -16,9 +16,13 @@
 </head>
 
 <body onload="gameLoop">
+
   <div id="bg-map"></div>
   <div id="fg-map"></div>
-  <img id="carImg" src="./icons/car.png"></img>
+  <div id='imgWrapper'>
+  	<img id="carImg" src="./icons/car.png"></img>
+  	<div class='gps_ring'></div>
+  </div>
   <div id="zendrive">84.7%</div>
 
 </body>
@@ -83,6 +87,12 @@
 	     if(code === 13) {
 	     	xA = 0;
   			yA = 0;
+	     }
+	     if(code === 81) {
+	     	xA += 0.00001;
+	     }
+	     if(code === 87) {
+	     	xA -= 0.00001;
 	     }
 
 	   });
